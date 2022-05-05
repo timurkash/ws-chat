@@ -4,7 +4,7 @@ import (
 	"github.com/timurkash/ws-chat/ws"
 )
 
-var Hub = NewHub()
+var Hub *Struct
 
 type Struct struct {
 	Register   chan *ws.Client
@@ -13,7 +13,11 @@ type Struct struct {
 	Clients    map[*ws.Client]struct{}
 }
 
-func NewHub() *Struct {
+func Init() {
+	Hub = newHub()
+}
+
+func newHub() *Struct {
 	hub := &Struct{
 		Register:   make(chan *ws.Client),
 		Unregister: make(chan *ws.Client),
