@@ -1,24 +1,24 @@
 package hub
 
 import (
-	"github.com/timurkash/ws-chat/wsclient"
+	"github.com/timurkash/ws-chat/ws"
 )
 
 var Hub = NewHub()
 
 type Struct struct {
-	Register   chan *wsclient.Client
-	Unregister chan *wsclient.Client
+	Register   chan *ws.Client
+	Unregister chan *ws.Client
 	Broadcast  chan []byte
-	Clients    map[*wsclient.Client]struct{}
+	Clients    map[*ws.Client]struct{}
 }
 
 func NewHub() *Struct {
 	hub := &Struct{
-		Register:   make(chan *wsclient.Client),
-		Unregister: make(chan *wsclient.Client),
+		Register:   make(chan *ws.Client),
+		Unregister: make(chan *ws.Client),
 		Broadcast:  make(chan []byte),
-		Clients:    make(map[*wsclient.Client]struct{}),
+		Clients:    make(map[*ws.Client]struct{}),
 	}
 	go hub.run()
 	return hub

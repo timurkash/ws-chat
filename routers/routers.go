@@ -3,7 +3,7 @@ package routers
 import (
 	"github.com/gorilla/websocket"
 	"github.com/timurkash/ws-chat/hub"
-	"github.com/timurkash/ws-chat/wsclient"
+	"github.com/timurkash/ws-chat/ws"
 	"log"
 	"net/http"
 )
@@ -24,10 +24,10 @@ func ServeWs(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	client := &wsclient.Client{
+	client := &ws.Client{
 		Conn: conn,
 		Send: make(chan []byte, sendBufferSize),
-		Register: func(client *wsclient.Client) {
+		Register: func(client *ws.Client) {
 			hub.Hub.Unregister <- client
 		},
 		Broadcast: func(message []byte) {
