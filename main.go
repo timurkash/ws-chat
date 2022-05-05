@@ -16,7 +16,7 @@ func init() {
 func main() {
 	http.HandleFunc("/", routers.ServeHome)
 	http.HandleFunc("/ws", routers.ServeWs)
-	log.Println("list & serve on", *addr)
+	log.Println("listen & serve on", *addr)
 	if err := http.ListenAndServe(*addr, nil); err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
