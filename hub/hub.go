@@ -1,7 +1,7 @@
 package hub
 
 import (
-	"github.com/timurkash/ws-chat/ws"
+	"github.com/timurkash/ws-chat/hub/ws"
 )
 
 var Hub *Struct

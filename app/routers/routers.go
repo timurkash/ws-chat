@@ -3,7 +3,7 @@ package routers
 import (
 	"github.com/gorilla/websocket"
 	"github.com/timurkash/ws-chat/hub"
-	"github.com/timurkash/ws-chat/ws"
+	"github.com/timurkash/ws-chat/hub/ws"
 	"log"
 	"net/http"
 )
@@ -49,5 +49,5 @@ func ServeHome(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
-	http.ServeFile(w, r, "routers/home.html")
+	http.ServeFile(w, r, "app/routers/home.html")
 }

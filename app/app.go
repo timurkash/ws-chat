@@ -1,8 +1,8 @@
 package app
 
 import (
+	"github.com/timurkash/ws-chat/app/routers"
 	"github.com/timurkash/ws-chat/hub"
-	"github.com/timurkash/ws-chat/routers"
 	"log"
 	"net/http"
 )
