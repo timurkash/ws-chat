@@ -14,18 +14,13 @@ type Struct struct {
 }
 
 func Init() {
-	Hub = newHub()
-}
-
-func newHub() *Struct {
-	hub := &Struct{
+	Hub = &Struct{
 		Register:   make(chan *ws.Client),
 		Unregister: make(chan *ws.Client),
 		Broadcast:  make(chan []byte),
 		Clients:    make(map[*ws.Client]struct{}),
 	}
-	go hub.run()
-	return hub
+	go Hub.run()
 }
 
 func (h *Struct) run() {
