@@ -9,11 +9,8 @@ import (
 
 var addr = flag.String("addr", ":8080", "http service address")
 
-func init() {
-	flag.Parse()
-}
-
 func main() {
+	flag.Parse()
 	http.HandleFunc("/", routers.ServeHome)
 	http.HandleFunc("/ws", routers.ServeWs)
 	log.Println("listen & serve on", *addr)
